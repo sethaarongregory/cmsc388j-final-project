@@ -12,7 +12,7 @@ from SPARQLWrapper import SPARQLWrapper, JSON
 # Our MapClient will generate maps and maintain them
 class MapClient(object):
     def __init__(self):
-        self.pd_table = initialize_pd_table()
+        self.pd_table = pd.read_csv('jazz-data.csv')
         self.basic_map = basic_map(self.pd_table)
         self.heat_map = heat_map(self.pd_table)
 
@@ -173,6 +173,6 @@ WHERE {
       FILTER (LANG(?description) = 'en') .
       FILTER(LANG(?abstract) = 'en') .
       FILTER (LANG(?name) = 'en') . 
-} ORDER BY ?name LIMIT 3000
+} ORDER BY ?name
 '''
 
