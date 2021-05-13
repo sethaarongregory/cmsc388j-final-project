@@ -32,9 +32,7 @@
           <span class="float-right">
             <small>{{ post.date }}</small>
           </span>
-          <a href="{{ url_for('users.user_detail', username=post.commenter.username, posts=posts) }}">
-            <strong>@{{ post.commenter.username }}</strong>
-          </a>
+          <a><strong>@{{ post.commenter.username }}</strong></a>
           <p>
             {{ post.content }}
           </p>
