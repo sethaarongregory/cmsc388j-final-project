@@ -173,6 +173,6 @@ WHERE {
       FILTER (LANG(?description) = 'en') .
       FILTER(LANG(?abstract) = 'en') .
       FILTER (LANG(?name) = 'en') . 
-} ORDER BY ?name LIMIT 8000
+} ORDER BY ?name LIMIT 3000
 '''
 
