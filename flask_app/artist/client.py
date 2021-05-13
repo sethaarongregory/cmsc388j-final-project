@@ -28,7 +28,7 @@ class ArtistClient(object):
                     if s.lower() in name.lower():
                         t = True
             if t:
-                desc = row['abstract']
+                desc = row['description']
                 birth_date = str(row['birthDate'])
                 birth_place = str(row['birthPlaceName'])
                 artist = Artist(name, desc, birth_date, birth_place)
@@ -46,7 +46,7 @@ class ArtistClient(object):
     def retrieve_artist_by_name(self, name):
         for idx, row in self.table.iterrows():
             if str(row['name']) == name:
-                desc = row['abstract']
+                desc = row['description']
                 birth_date = int(row['birthDate'])
                 birth_place = str(row['birthPlaceName'])
                 artist = Artist(name, desc, birth_date, birth_place)
