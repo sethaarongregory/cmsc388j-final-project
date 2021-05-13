@@ -39,7 +39,7 @@ def page_not_found(e):
 
 
 def create_app(test_config=None):
-    app = Flask(__name__)
+    app = Flask(__name__, template_folder='templates')
 
     app.config["MONGODB_HOST"] = "mongodb://localhost:27017/final_exam"
     app.config.from_pyfile("config.py", silent=False)
