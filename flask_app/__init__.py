@@ -29,7 +29,6 @@ bcrypt = Bcrypt()
 map_client = MapClient()
 artist_client = ArtistClient(map_client.pd_table)
 
-
 from .routes import main
 from.users.routes import users
 from .artist.routes import artists
@@ -42,6 +41,7 @@ def page_not_found(e):
 def create_app(test_config=None):
     app = Flask(__name__)
 
+    app.config["MONGODB_HOST"] = os.getenv("MONGODB_HOST")
     app.config.from_pyfile("config.py", silent=False)
     if test_config is not None:
         app.config.update(test_config)
