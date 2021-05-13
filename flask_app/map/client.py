@@ -12,7 +12,8 @@ from SPARQLWrapper import SPARQLWrapper, JSON
 # Our MapClient will generate maps and maintain them
 class MapClient(object):
     def __init__(self):
-        self.pd_table = initialize_pd_table()
+        self.pd_table = pd.DataFrame()
+        # self.pd_table = initialize_pd_table()
         self.basic_map = basic_map(self.pd_table)
         self.heat_map = heat_map(self.pd_table)
 
@@ -39,11 +40,11 @@ class MapClient(object):
 
 def heat_map(df):
     heatm = folium.Map(location=[35,-100], zoom_start=4)
-    heat_data = [[[row['lat'], row['long']] for idx, row in
-                  df[(df['birthDate'] <= i) & (df['birthDate'] + 10 > i)].iterrows()] for i in range(1875, 1990)]
+    # heat_data = [[[row['lat'], row['long']] for idx, row in
+                  # df[(df['birthDate'] <= i) & (df['birthDate'] + 10 > i)].iterrows()] for i in range(1875, 1990)]
 
-    hm = plugins.HeatMapWithTime(heat_data, auto_play=True, max_opacity=0.8)
-    hm.add_to(heatm)
+    # hm = plugins.HeatMapWithTime(heat_data, auto_play=True, max_opacity=0.8)
+    # hm.add_to(heatm)
 
     return heatm
 
@@ -66,15 +67,15 @@ def initialize_pd_table():
 def basic_map(df):
     m = folium.Map(location=[35, -100], zoom_start=4)
 
-    for i in range(0, len(df)):
-        name = df.iloc[i]['name']
-        content = df.iloc[i]['description']
+    # for i in range(0, len(df)):
+    #     name = df.iloc[i]['name']
+    #     content = df.iloc[i]['description']
 
-        html = '<b>' + name + '</b><p>' + content + '</p>'
+    #     html = '<b>' + name + '</b><p>' + content + '</p>'
 
-        html = folium.Html(html, script=True)
-        popup = folium.Popup(html, max_width=250)
-        folium.Marker([df.iloc[i]['lat'], df.iloc[i]['long']], popup=popup).add_to(m)
+    #     html = folium.Html(html, script=True)
+    #     popup = folium.Popup(html, max_width=250)
+    #     folium.Marker([df.iloc[i]['lat'], df.iloc[i]['long']], popup=popup).add_to(m)
 
     return m
 
